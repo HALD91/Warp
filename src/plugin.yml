@@ -1,7 +1,7 @@
 name: Warp
 main: me.Hald91.Main
 author: HALD91
-version: 1.2.0.1
+version: 1.2.7.3
 api-version: 1.13
 
 commands:

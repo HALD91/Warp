@@ -101,6 +101,7 @@ public class WarpMenu implements Listener {
                                 if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GREEN + "Survival")) {
                                     event.setCancelled(true);
                                     p3.closeInventory();
+                                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), ("tp" + p3.getPlayer().getName() + " " + String.valueOf(main.getConfig().getString("test")).replace(",", "")));
                                 }
                                 break;
                             case BLUE_STAINED_GLASS_PANE:

@@ -1,3 +1,14 @@
+###########################
+#####                 #####
+####                   ####
+###   Author: HALD91    ###
+###   Version: 1.2.7.3  ###
+####                   ####
+#####                 #####
+###########################
+
+## Set your own prefix here on commands in chat or on the warp menu.
 WarpCommandPrefix: '&7[&6YourPrefix&7]&r'
 
 WarpMenuPrefix: '&7[&6YourPrefix&7]&r'
+
