@@ -15,8 +15,7 @@ public class Main extends JavaPlugin {
     public FileConfiguration config = getConfig();
     public List<String> world = config.getStringList("");
     public List<String> coords = config.getStringList("");
-    public String commandPrefix = config.getString("WarpCommandPrefix");
-    public String menuPrefix = config.getString("WarpMenuPrefix");
+    public String prefix = config.getString("Prefix");
 
 
     @Override
