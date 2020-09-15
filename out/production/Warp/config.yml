@@ -8,7 +8,7 @@
 ###########################
 
 ## Set your own prefix here on commands in chat or on the warp menu.
-WarpCommandPrefix: '&7[&6YourPrefix&7]&r'
+Prefix: '&7[&6YourPrefix&7]&r'
 
-WarpMenuPrefix: '&7[&6YourPrefix&7]&r'
+warps:
 

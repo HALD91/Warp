@@ -69,7 +69,7 @@ public class CommandManager implements CommandExecutor {
                                 list2.remove(messages1);
                             }else {
                                 commandSender.sendMessage(messages1);
-                                ((Player) commandSender).performCommand("tp" + " " + commandSender.getName() + " " + String.valueOf(messages1).replace(",", "").replace("Name: " + args[0], "").replace(" x: ", " ").replace(" y: ", " ").replace(" z: ", " ").replace("[", "").replace("]", ""));
+                                ((Player) commandSender).performCommand("tp" + " " + commandSender.getName() + "" + String.valueOf(messages1).replace(",", "").replace("Name: " + args[0], "").replace(" x: ", " ").replace(" y: ", " ").replace(" z: ", " ").replace("[", "").replace("]", ""));
                                 commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + ChatColor.GREEN + " " + "You have been teleportet to" + " " + ChatColor.GRAY + args[0]));
                                 return true;
                             }
