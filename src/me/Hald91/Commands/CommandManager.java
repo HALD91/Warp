@@ -4,6 +4,7 @@ import me.Hald91.Main;
 import me.Hald91.Warps.WarpMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -38,7 +39,7 @@ public class CommandManager implements CommandExecutor {
                         if (main.getConfig().getStringList("warps").isEmpty()) {
                             commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + " " + ChatColor.GRAY + "No warps has been sat"));
                         }
-                        for (String messages: main.getConfig().getStringList("warps")){
+                        for (String messages : main.getConfig().getStringList("warps")) {
                             commandSender.sendMessage(messages);
                         }
                         return true;
@@ -64,19 +65,19 @@ public class CommandManager implements CommandExecutor {
                     if (!args[0].isEmpty()) {
                         ArrayList<String> list2 = (ArrayList<String>) main.getConfig().getStringList("warps");
                         //commandSender.sendMessage(list2.toString());
-                        for (String messages1: list2){
-                            if (!messages1.contains(args[0])){
-                                list2.remove(messages1);
-                            }else {
-                                commandSender.sendMessage(messages1);
-                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"tp" + " " + commandSender.getName() + "" + String.valueOf(messages1).replace(",", "").replace("Name: " + args[0], "").replace(" x: ", " ").replace(" y: ", " ").replace(" z: ", " ").replace("[", "").replace("]", ""));
+                        for (String messages1 : list2) {
+                            if (messages1.contains(args[0])) {
+                                main.getConfig();
+                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tp" + " " + commandSender.getName() + "" + String.valueOf(messages1).replace(",", "").replace("Name: " + args[0], "").replace(" x: ", " ").replace(" y: ", " ").replace(" z: ", " ").replace("[", "").replace("]", ""));
                                 commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + ChatColor.GREEN + " " + "You have been teleportet to" + " " + ChatColor.GRAY + args[0]));
+                                break;
+                            }
+                            else {
+                                list2.remove(messages1);
                                 return true;
                             }
                         }
                     }
-                    return true;
-
                 }
                 if (args.length == 2) {
                     if (commandSender.hasPermission("warp.admin.set")) {
@@ -95,7 +96,6 @@ public class CommandManager implements CommandExecutor {
                                 main.coords.add(y);
                                 main.coords.add(z);
                                 main.getConfig();
-
                                 main.getConfig().get(main.prefix.toString());
                                 list.add("Name: " + args[1] + " x: " + x + " y: " + y + " z: " + z);
                                 main.getConfig().set("warps", list);
@@ -106,36 +106,47 @@ public class CommandManager implements CommandExecutor {
                                 main.world.clear();
                                 main.saveConfig();
                                 commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + " " + ChatColor.GREEN + "Warp set at: " + ChatColor.GRAY + args[1]));
-                            }
-                        }
-                    }
-                    if (commandSender.hasPermission("warp.admin.del")) {
-                        if (args[0].equalsIgnoreCase("Del")){
-                            if (!args[1].isEmpty()) {
-                                commandSender.getName();
-                                commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + " " + ChatColor.GRAY + args[1] + " " + ChatColor.GREEN + "Has been removed"));
-                                main.getConfig().set(args[1], null);
-                                main.saveConfig();
-                            }
-                        }
-                    }
-                    if (args[0].equalsIgnoreCase("SetPrefix")) {
-                        if (commandSender.hasPermission("warp.admin.setprefix")) {
-                            if (!args[1].isEmpty()) {
-                                main.getConfig().set("Prefix", args[1]);
-                                main.saveConfig();
-                                commandSender.sendMessage(ChatColor.GREEN + "Your new prefix" + ChatColor.RESET + " " + ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString()));
-                            } else {
-                                commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + " " + ChatColor.GREEN + "/warp SetPrefix <Your Prefix>"));
-
                             } return true;
                         }
                     }
-                    return true;
+                    if (commandSender.hasPermission("warp.admin.del")) {
+                        if (args[0].equalsIgnoreCase("Del")) {
+                            if (!args[1].isEmpty()) {
+                                ArrayList<String> list3 = (ArrayList<String>) main.getConfig().getStringList("warps");
+                                for (String messages2 : list3) {
+                                    if (messages2.contains(args[1])){
+                                        list3.remove(messages2);
+                                        main.getConfig().set("warps", list3);
+                                        main.saveConfig();
+                                        commandSender.sendMessage("warp is deletet");
+                                        break;
+                                    }
+                                    /*
+                                    if (!messages2.contains(args[1]) || messages2.equals("[]")){
+                                        commandSender.sendMessage("dette warp findes ikke");
+                                        return true;
+                                    }*/
+                                }
+                                return true;
+                            }
+                        }
+                        if (args[0].equalsIgnoreCase("SetPrefix")) {
+                            if (commandSender.hasPermission("warp.admin.setprefix")) {
+                                if (!args[1].isEmpty()) {
+                                    main.getConfig().set("Prefix", args[1]);
+                                    main.saveConfig();
+                                    commandSender.sendMessage(ChatColor.GREEN + "Your new prefix" + ChatColor.RESET + " " + ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString()));
+                                } else {
+                                    commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + " " + ChatColor.GREEN + "/warp SetPrefix <Your Prefix>"));
+                                }
+                                return true;
+                            }
+                        }
+                        return true;
+                    }
                 }
             }
-        }
-        return false;
+        } return false;
     }
 }
 
