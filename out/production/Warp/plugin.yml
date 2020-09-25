@@ -6,4 +6,5 @@ api-version: 1.13
 
 commands:
   Warp:
+    permission: warp.use
 
