@@ -4,6 +4,7 @@ import me.Hald91.Commands.CommandManager;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.util.List;
 import java.util.logging.Logger;
 

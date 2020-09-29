@@ -24,29 +24,29 @@ public class CommandManager implements CommandExecutor {
             if (commandSender.hasPermission("warp.use")) {
 
                 if (args.length == 0) {
-                    commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + " " + ChatColor.GRAY + "/Warp help" + " " + ChatColor.AQUA + "To see how you use this command"));
+                    commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + " " + ChatColor.AQUA + "/Warp help" + " " + ChatColor.WHITE + "To see how you use this command"));
                 }
                     if (args.length == 1) {
                         if (args[0].equalsIgnoreCase("List")) {
-                            commandSender.sendMessage(ChatColor.GREEN + "Getting list.");
+                            commandSender.sendMessage(ChatColor.AQUA + "Getting list.");
                             if (main.getConfig().getStringList("warps").isEmpty()) {
-                                commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + " " + ChatColor.GRAY + "no warps exists"));
+                                commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + " " + ChatColor.WHITE + "no warps exists"));
                             }
                             for (String messages : main.getConfig().getStringList("warps")) {
-                                commandSender.sendMessage(ChatColor.GRAY + messages);
+                                commandSender.sendMessage(ChatColor.WHITE + messages);
                             }
                             return true;
                         }
                         if (args[0].equalsIgnoreCase("Help")) {
                             commandSender.sendMessage(ChatColor.GRAY + "-----------------" + ChatColor.GOLD + "Help" + ChatColor.GRAY + "---------------");
                             commandSender.sendMessage(" ");
-                            commandSender.sendMessage(ChatColor.GREEN + "/Warp help" + ChatColor.AQUA + " " + "To see how you use this command");
-                            commandSender.sendMessage(ChatColor.GREEN + "/Warp List" + ChatColor.AQUA + " " + "To see how many warps there has been sat");
-                            commandSender.sendMessage(ChatColor.GREEN + "/Warp <Warp>" + ChatColor.AQUA + " " + "To teleport to a warp");
-                            commandSender.sendMessage(ChatColor.GREEN + "/Warp reload" + ChatColor.AQUA + " " + "To reload the config");
-                            commandSender.sendMessage(ChatColor.GREEN + "/Warp Set <Warp>" + ChatColor.AQUA + " " + "To set a warp");
-                            commandSender.sendMessage(ChatColor.GREEN + "/Warp Del <Warp>" + ChatColor.AQUA + " " + "To delete a warp");
-                            commandSender.sendMessage(ChatColor.GREEN + "/warp SetPrefix <Prefix>" + ChatColor.AQUA + " " + "To set your own prefix");
+                            commandSender.sendMessage(ChatColor.AQUA + "/Warp help" + ChatColor.WHITE + " " + "To see how you use this command");
+                            commandSender.sendMessage(ChatColor.AQUA + "/Warp List" + ChatColor.WHITE + " " + "To see how many warps there has been sat");
+                            commandSender.sendMessage(ChatColor.AQUA + "/Warp <Warp>" + ChatColor.WHITE + " " + "To teleport to a warp");
+                            commandSender.sendMessage(ChatColor.AQUA + "/Warp reload" + ChatColor.WHITE + " " + "To reload the config");
+                            commandSender.sendMessage(ChatColor.AQUA + "/Warp Set <Warp>" + ChatColor.WHITE + " " + "To set a warp");
+                            commandSender.sendMessage(ChatColor.AQUA + "/Warp Del <Warp>" + ChatColor.WHITE + " " + "To delete a warp");
+                            commandSender.sendMessage(ChatColor.AQUA + "/warp SetPrefix <Prefix>" + ChatColor.WHITE + " " + "To set your own prefix");
                             commandSender.sendMessage(" ");
                             commandSender.sendMessage("-----------------------------------------------------");
                             return true;
@@ -54,7 +54,7 @@ public class CommandManager implements CommandExecutor {
                         if (args[0].equalsIgnoreCase("Reload")) {
                             if (commandSender.hasPermission("warp.admin.reload")) {
                                 main.reloadConfig();
-                                commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + ChatColor.RED + " " + "Config" + " " + ChatColor.GRAY + "has been reload"));
+                                commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + ChatColor.RED + " " + "Config" + " " + ChatColor.WHITE + "has been reload"));
                                 return true;
                             }
                         }
@@ -63,7 +63,7 @@ public class CommandManager implements CommandExecutor {
                             for (String messages1 : list2) {
                                 if (messages1.contains(args[0])) {
                                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tp" + " " + commandSender.getName() + "" + String.valueOf(messages1.toString()).replace(",", "").replace("Name: " + args[0], "").replace(" x: ", " ").replace(" y: ", " ").replace(" z: ", " ").replace("[", "").replace("]", ""));
-                                    commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + ChatColor.GREEN + " " + "You have been teleportet to" + " " + ChatColor.GRAY + args[0]));
+                                    commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + ChatColor.WHITE + " " + "You have been teleportet to" + " " + ChatColor.AQUA + args[0]));
                                 }
                             }
                         }
@@ -97,7 +97,7 @@ public class CommandManager implements CommandExecutor {
                                     "\n" +
                                     "Set your own prefix here on commands in chat or on the warp menu.");
                             main.saveConfig();
-                            commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + " " + ChatColor.LIGHT_PURPLE + args[1] + ChatColor.WHITE + " " + "set at:" + " " + "X:" + " "+ ChatColor.GRAY + x + " " + ChatColor.WHITE + "Y:" + " " + ChatColor.GRAY + y + " " + ChatColor.WHITE + "Z:" + " " + ChatColor.GRAY + z));
+                            commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + " " + ChatColor.AQUA + args[1] + ChatColor.WHITE + " " + "set at:" + " " + "X:" + " "+ ChatColor.GRAY + x + " " + ChatColor.WHITE + "Y:" + " " + ChatColor.GRAY + y + " " + ChatColor.WHITE + "Z:" + " " + ChatColor.GRAY + z));
                         } return true;
                     }
                 }
@@ -113,7 +113,7 @@ public class CommandManager implements CommandExecutor {
                                         list3.remove(messages2);
                                         main.getConfig().set("warps", list3);
                                         main.saveConfig();
-                                        commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + " " + ChatColor.RED + args[1] + ChatColor.GRAY + " " + "has been deleted"));
+                                        commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + " " + ChatColor.AQUA + args[1] + ChatColor.WHITE + " " + "has been deleted"));
                                         break;
                                     }
                                 }
@@ -126,7 +126,7 @@ public class CommandManager implements CommandExecutor {
                             if (!args[1].isEmpty()) {
                                 main.getConfig().set("Prefix", args[1]);
                                 main.saveConfig();
-                                commandSender.sendMessage(ChatColor.GREEN + "Your new prefix" + ChatColor.RESET + " " + ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString()));
+                                commandSender.sendMessage(ChatColor.WHITE + "Your new prefix" + ChatColor.RESET + " " + ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString()));
                             }return true;
                         }
                     }
