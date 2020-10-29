@@ -10,12 +10,32 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static java.lang.String.valueOf;
 
 public class CommandManager implements CommandExecutor {
     public static Player player;
+    private List<String> nowallowed = new ArrayList<>();
 
+    public CommandManager(){
+        nowallowed.add("&0");
+        nowallowed.add("&1");
+        nowallowed.add("&2");
+        nowallowed.add("&3");
+        nowallowed.add("&4");
+        nowallowed.add("&5");
+        nowallowed.add("&6");
+        nowallowed.add("&7");
+        nowallowed.add("&8");
+        nowallowed.add("&9");
+        nowallowed.add("&a");
+        nowallowed.add("&b");
+        nowallowed.add("&c");
+        nowallowed.add("&d");
+        nowallowed.add("&e");
+        nowallowed.add("&f");
+    }
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         Main main = JavaPlugin.getPlugin(Main.class);
@@ -73,7 +93,8 @@ public class CommandManager implements CommandExecutor {
                 if (commandSender.hasPermission("warp.admin.set")) {
                     if (args[0].equalsIgnoreCase("Set")) {
                         if (!args[1].isEmpty()) {
-                            if (args[1].contains("&") || (args[1].contains("1") || (args[1].contains("2") || (args[1].contains("3") || (args[1].contains("4") || (args[1].contains("5") || (args[1].contains("6") || (args[1].contains("7") || (args[1].contains("8") || (args[1].contains("9"))))))))))) {
+
+                            if (args[1].contains(nowallowed.toString())) {
                                 commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + " " + ChatColor.WHITE + "using color codes on the warp name arent allow."));
                             } else {
 
